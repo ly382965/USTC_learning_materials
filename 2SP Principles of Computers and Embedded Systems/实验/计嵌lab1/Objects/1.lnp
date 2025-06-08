@@ -1,0 +1,8 @@
+--cpu Cortex-M4.fp
+".\objects\test.o"
+".\objects\startup_stm32f40_41xxx.o"
+".\objects\system_stm32f4xx.o"
+--strict --scatter ".\Objects\1.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\1.map" -o .\Objects\1.axf

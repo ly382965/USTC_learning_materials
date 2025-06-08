@@ -1,0 +1,20 @@
+build-gen:
+  board: 
+  compiler: AC6
+  device: STM32F407ZG
+  generated-by: uVision version 5.42.0.0
+  processor:
+    core: Cortex-M4
+    dsp: off
+    endian: little
+    fpu: sp
+  add-path: 
+  components:
+    - component: ARM::CMSIS:CORE@6.1.0
+      from-pack: ARM::CMSIS@6.1.0
+  apis: 
+  groups:
+    - group: Source Group 1
+      files:
+        - file: E:/learning_materials/本科课程资料/大二春/计算机原理与嵌入式系统/实验/计嵌lab1/test.c
+          category: sourceC

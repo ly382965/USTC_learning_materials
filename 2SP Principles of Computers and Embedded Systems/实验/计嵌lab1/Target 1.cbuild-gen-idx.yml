@@ -1,0 +1,13 @@
+build-gen-idx:
+  generated-by: uVision version 5.42.0.0
+  generators:
+    - board: 
+      device: STM32F407ZG
+      id: CubeMX
+      output: E:/learning_materials/本科课程资料/大二春/计算机原理与嵌入式系统/实验/计嵌lab1/STM32CubeMX/Target 1/
+      project-type: single-core
+      cbuild-gens:
+        - cbuild-gen: E:/learning_materials/本科课程资料/大二春/计算机原理与嵌入式系统/实验/计嵌lab1/1.Target 1.cbuild-gen.yml
+          configuration: .Target 1
+          name: E:/learning_materials/本科课程资料/大二春/计算机原理与嵌入式系统/实验/计嵌lab1/STM32CubeMX/Target 1/1.cgen.yml
+          project: 1

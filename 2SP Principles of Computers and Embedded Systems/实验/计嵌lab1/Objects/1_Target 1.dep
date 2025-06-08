@@ -1,0 +1,6 @@
+Dependencies for Project '1', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 6230000::V6.23::ARMCLANG
+F (.\test.c)(0x66421076)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections-I C:\Users\stl\Desktop\新建文件夹\RTE-I C:\Users\stl\Desktop\新建文件夹\RTE\Device\STM32F407ZG-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx-o .\objects\test.o --omf_browse .\objects\test.crf --depend .\objects\test.d)
+F (RTE/Device/STM32F407ZG/RTE_Device.h)(0x535F3E24)()
+F (RTE/Device/STM32F407ZG/startup_stm32f40_41xxx.s)(0x529EBB22)()
+F (RTE/Device/STM32F407ZG/system_stm32f4xx.c)(0x529EBB22)()
