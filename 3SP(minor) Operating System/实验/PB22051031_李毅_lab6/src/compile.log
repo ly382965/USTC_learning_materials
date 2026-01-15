@@ -1,0 +1,146 @@
+mkdir -p output/myOS/
+gcc -m32 --pipe -Wall -fasm -g -O1 -fno-stack-protector	 -c -o output/myOS/start32.o myOS/start32.S
+mkdir -p output/myOS/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/osStart.o myOS/osStart.c
+mkdir -p output/myOS/dev/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/dev/uart.o myOS/dev/uart.c
+mkdir -p output/myOS/dev/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/dev/vga.o myOS/dev/vga.c
+mkdir -p output/myOS/dev/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/dev/i8253.o myOS/dev/i8253.c
+mkdir -p output/myOS/dev/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/dev/i8259A.o myOS/dev/i8259A.c
+mkdir -p output/myOS/i386/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/i386/io.o myOS/i386/io.c
+mkdir -p output/myOS/i386/
+gcc -m32 --pipe -Wall -fasm -g -O1 -fno-stack-protector	 -c -o output/myOS/i386/irq.o myOS/i386/irq.S
+mkdir -p output/myOS/i386/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/i386/irqs.o myOS/i386/irqs.c
+mkdir -p output/myOS/i386/
+gcc -m32 --pipe -Wall -fasm -g -O1 -fno-stack-protector	 -c -o output/myOS/i386/CTX_SW.o myOS/i386/CTX_SW.S
+mkdir -p output/myOS/printk/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/printk/myPrintk.o myOS/printk/myPrintk.c
+mkdir -p output/myOS/lib/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/lib/string.o myOS/lib/string.c
+myOS/lib/string.c:7:5: warning: conflicting types for built-in function ‘strcpy’; expected ‘char *(char *, const char *)’ [-Wbuiltin-declaration-mismatch]
+    7 | int strcpy(unsigned char *src, unsigned char *dst){
+      |     ^~~~~~
+myOS/lib/string.c:1:1: note: ‘strcpy’ is declared in header ‘<string.h>’
+  +++ |+#include <string.h>
+    1 | int strLength(unsigned char *str){
+myOS/lib/string.c:16:5: warning: conflicting types for built-in function ‘strncpy’; expected ‘char *(char *, const char *, unsigned int)’ [-Wbuiltin-declaration-mismatch]
+   16 | int strncpy(unsigned char *src, unsigned char *dst, unsigned int n){
+      |     ^~~~~~~
+myOS/lib/string.c:16:5: note: ‘strncpy’ is declared in header ‘<string.h>’
+myOS/lib/string.c:26:5: warning: conflicting types for built-in function ‘strcmp’; expected ‘int(const char *, const char *)’ [-Wbuiltin-declaration-mismatch]
+   26 | int strcmp(unsigned char *str1, unsigned char *str2){
+      |     ^~~~~~
+myOS/lib/string.c:26:5: note: ‘strcmp’ is declared in header ‘<string.h>’
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/tick.o myOS/kernel/tick.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/wallClock.o myOS/kernel/wallClock.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/task.o myOS/kernel/task.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/taskPara.o myOS/kernel/taskPara.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/taskQueue.o myOS/kernel/taskQueue.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/taskArrv.o myOS/kernel/taskArrv.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/schedulers.o myOS/kernel/schedulers.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/scheduler.o myOS/kernel/scheduler.c
+mkdir -p output/myOS/kernel/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/scheduleTest.o myOS/kernel/scheduleTest.c
+mkdir -p output/myOS/kernel/mem/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/mem/pMemInit.o myOS/kernel/mem/pMemInit.c
+mkdir -p output/myOS/kernel/mem/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/mem/dPartition.o myOS/kernel/mem/dPartition.c
+mkdir -p output/myOS/kernel/mem/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/mem/eFPartition.o myOS/kernel/mem/eFPartition.c
+mkdir -p output/myOS/kernel/mem/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/myOS/kernel/mem/malloc.o myOS/kernel/mem/malloc.c
+myOS/kernel/mem/malloc.c:3:15: warning: conflicting types for built-in function ‘malloc’; expected ‘void *(unsigned int)’ [-Wbuiltin-declaration-mismatch]
+    3 | unsigned long malloc(unsigned long size){
+      |               ^~~~~~
+myOS/kernel/mem/malloc.c:2:1: note: ‘malloc’ is declared in header ‘<stdlib.h>’
+    1 | #include "../../include/mem.h"
+  +++ |+#include <stdlib.h>
+    2 | 
+mkdir -p output/userApp/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/userApp/main.o userApp/main.c
+In file included from userApp/../myOS/userInterface.h:10,
+                 from userApp/main.c:2:
+userApp/../myOS/include/string.h:4:5: warning: conflicting types for built-in function ‘strcmp’; expected ‘int(const char *, const char *)’ [-Wbuiltin-declaration-mismatch]
+    4 | int strcmp(unsigned char *str1, unsigned char *str2);
+      |     ^~~~~~
+userApp/../myOS/include/string.h:1:1: note: ‘strcmp’ is declared in header ‘<string.h>’
+  +++ |+#include <string.h>
+    1 | #ifndef __STRING_H__
+userApp/../myOS/include/string.h:5:5: warning: conflicting types for built-in function ‘strncpy’; expected ‘char *(char *, const char *, unsigned int)’ [-Wbuiltin-declaration-mismatch]
+    5 | int strncpy(unsigned char *src, unsigned char *dest, unsigned int n);
+      |     ^~~~~~~
+userApp/../myOS/include/string.h:5:5: note: ‘strncpy’ is declared in header ‘<string.h>’
+In file included from userApp/../myOS/userInterface.h:13:
+userApp/../myOS/include/malloc.h:4:15: warning: conflicting types for built-in function ‘malloc’; expected ‘void *(unsigned int)’ [-Wbuiltin-declaration-mismatch]
+    4 | unsigned long malloc(unsigned long size);
+      |               ^~~~~~
+userApp/../myOS/include/malloc.h:1:1: note: ‘malloc’ is declared in header ‘<stdlib.h>’
+  +++ |+#include <stdlib.h>
+    1 | #ifndef __MALLOC_H__
+userApp/main.c: In function ‘simpleTask1’:
+userApp/main.c:16:5: warning: implicit declaration of function ‘tskEnd’ [-Wimplicit-function-declaration]
+   16 |     tskEnd();
+      |     ^~~~~~
+mkdir -p output/userApp/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/userApp/shell.o userApp/shell.c
+In file included from userApp/../myOS/userInterface.h:10,
+                 from userApp/shell.c:2:
+userApp/../myOS/include/string.h:4:5: warning: conflicting types for built-in function ‘strcmp’; expected ‘int(const char *, const char *)’ [-Wbuiltin-declaration-mismatch]
+    4 | int strcmp(unsigned char *str1, unsigned char *str2);
+      |     ^~~~~~
+userApp/../myOS/include/string.h:1:1: note: ‘strcmp’ is declared in header ‘<string.h>’
+  +++ |+#include <string.h>
+    1 | #ifndef __STRING_H__
+userApp/../myOS/include/string.h:5:5: warning: conflicting types for built-in function ‘strncpy’; expected ‘char *(char *, const char *, unsigned int)’ [-Wbuiltin-declaration-mismatch]
+    5 | int strncpy(unsigned char *src, unsigned char *dest, unsigned int n);
+      |     ^~~~~~~
+userApp/../myOS/include/string.h:5:5: note: ‘strncpy’ is declared in header ‘<string.h>’
+In file included from userApp/../myOS/userInterface.h:13:
+userApp/../myOS/include/malloc.h:4:15: warning: conflicting types for built-in function ‘malloc’; expected ‘void *(unsigned int)’ [-Wbuiltin-declaration-mismatch]
+    4 | unsigned long malloc(unsigned long size);
+      |               ^~~~~~
+userApp/../myOS/include/malloc.h:1:1: note: ‘malloc’ is declared in header ‘<stdlib.h>’
+  +++ |+#include <stdlib.h>
+    1 | #ifndef __MALLOC_H__
+mkdir -p output/userApp/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/userApp/memTestCase.o userApp/memTestCase.c
+In file included from userApp/../myOS/userInterface.h:10,
+                 from userApp/memTestCase.c:2:
+userApp/../myOS/include/string.h:4:5: warning: conflicting types for built-in function ‘strcmp’; expected ‘int(const char *, const char *)’ [-Wbuiltin-declaration-mismatch]
+    4 | int strcmp(unsigned char *str1, unsigned char *str2);
+      |     ^~~~~~
+userApp/../myOS/include/string.h:1:1: note: ‘strcmp’ is declared in header ‘<string.h>’
+  +++ |+#include <string.h>
+    1 | #ifndef __STRING_H__
+userApp/../myOS/include/string.h:5:5: warning: conflicting types for built-in function ‘strncpy’; expected ‘char *(char *, const char *, unsigned int)’ [-Wbuiltin-declaration-mismatch]
+    5 | int strncpy(unsigned char *src, unsigned char *dest, unsigned int n);
+      |     ^~~~~~~
+userApp/../myOS/include/string.h:5:5: note: ‘strncpy’ is declared in header ‘<string.h>’
+In file included from userApp/../myOS/userInterface.h:13:
+userApp/../myOS/include/malloc.h:4:15: warning: conflicting types for built-in function ‘malloc’; expected ‘void *(unsigned int)’ [-Wbuiltin-declaration-mismatch]
+    4 | unsigned long malloc(unsigned long size);
+      |               ^~~~~~
+userApp/../myOS/include/malloc.h:1:1: note: ‘malloc’ is declared in header ‘<stdlib.h>’
+  +++ |+#include <stdlib.h>
+    1 | #ifndef __MALLOC_H__
+mkdir -p output/userApp/
+gcc -m32 -fno-stack-protector -fno-builtin-free -g -c -o output/userApp/userTasks.o userApp/userTasks.c
+mkdir -p output/multibootheader/
+gcc -m32 --pipe -Wall -fasm -g -O1 -fno-stack-protector	 -c -o output/multibootheader/multibootHeader.o multibootheader/multibootHeader.S
+ld -n -T myOS/myOS.ld output/multibootheader/multibootHeader.o output/myOS/start32.o output/myOS/osStart.o output/myOS/dev/uart.o output/myOS/dev/vga.o output/myOS/dev/i8253.o output/myOS/dev/i8259A.o output/myOS/i386/io.o output/myOS/i386/irq.o output/myOS/i386/irqs.o output/myOS/i386/CTX_SW.o output/myOS/printk/myPrintk.o output/myOS/lib/string.o output/myOS/kernel/tick.o output/myOS/kernel/wallClock.o output/myOS/kernel/task.o output/myOS/kernel/taskPara.o output/myOS/kernel/taskQueue.o output/myOS/kernel/taskArrv.o output/myOS/kernel/schedulers.o output/myOS/kernel/scheduler.o output/myOS/kernel/scheduleTest.o output/myOS/kernel/mem/pMemInit.o output/myOS/kernel/mem/dPartition.o output/myOS/kernel/mem/eFPartition.o output/myOS/kernel/mem/malloc.o output/userApp/main.o output/userApp/shell.o output/userApp/memTestCase.o output/userApp/userTasks.o -o output/myOS.elf
+ld: warning: output/myOS/i386/CTX_SW.o: missing .note.GNU-stack section implies executable stack
+ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+ld: warning: output/myOS.elf has a LOAD segment with RWX permissions
